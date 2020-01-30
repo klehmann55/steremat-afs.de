@@ -1,0 +1,14 @@
+* {
+    box-sizing: 		    border-box;
+}
+body {
+    margin:                 0;
+    background-color:     rgb(190,190,190);
+}
+.bg {
+    background-image:       url("img/Web-Design2a.jpg");            
+    background-repeat:      no-repeat;
+    background-position:    top;
+    position:               relative;
+    height:                 5800px;
+}
