@@ -1,14 +1,157 @@
+/* COLORS ........................................................................ */
+
+/* 
+    black
+    white
+    lightgrey               rgb(190,190,190)
+    blue                    rgb(100, 100, 250)
+*/
+
+/* REGULAR ........................................................................ */
+
 * {
     box-sizing: 		    border-box;
+    /* margin:                 0; */
+    padding:                0;
+}
+html, body {
+    /* height:                 100%; */
 }
 body {
     margin:                 0;
-    background-color:     rgb(190,190,190);
-}
-.bg {
-    background-image:       url("img/Web-Design2a.jpg");            
+    font-size: 			    16px;
+    font-family: 		    'Arial', sans-serif;
+    width:                  100%;
+    background-color:       rgb(190,190,190);
+    background-image:       url("../img/pixabay/tv-tower.jpg");
+    /* background-image:       url("../img/pixabay/brandenburg-gate.jpg"); */
+    /* background-image:       url("../img/pixabay/berlin.jpg"); */
+    /* background-image:       url("../img/pixabay/brandenburg-gate1.jpg"); */
     background-repeat:      no-repeat;
-    background-position:    top;
+    background-attachment:  fixed;
+}
+ul#left {
+    padding:                0;
+    left:                   -.6rem;
     position:               relative;
-    height:                 5800px;
+    width:                  520px;
+    float:                  left;
+}
+ul#right {
+    padding:                0;
+    /* right:                  .6rem; */
+    position:               relative;
+    /* width:                  520px; */
+    float:                  right;
+}
+a {
+    color:                  black;
+    text-decoration:        none;
+}
+a:hover {
+    color:                  rgb(100, 100, 250);
+}
+a:active {
+    color:                  rgb(100, 100, 250);
+}
+a:target {
+    color:                  rgb(100, 100, 250);
+}
+#active {
+    color:                  rgb(100, 100, 250);
+}
+h2, h3 {
+    text-align:             center;
+    color:                  rgb(100, 100, 250);
+}
+
+
+/* NAVIGATION ...................................................................... */
+
+#logo {
+    width:                  20rem;
+}
+
+#navtop li {
+    padding:                1rem;
+    display:                inline;
+    background-color:       white;
+
+}
+#navfooter li {
+    padding:                1rem;
+    display:                inline;
+    background-color:       white;
+}
+div#navigation-top {
+    top:                    0;
+    padding:                1rem .5rem .5rem 1rem;
+    width:                  100%;
+    position:               fixed;
+    background-color:       white; 
+
+    box-shadow:             0px 0px 20px grey;
+
+    z-index:                2;
+}
+div#navigation-bottom {
+    left:                   0;
+    bottom:                 0;
+    padding:                .5rem;
+    width:                  100%;
+    /* position:               fixed; */
+    position:               static;
+    text-align:             center;
+    background-color:       white;
+
+    box-shadow:             0px 0px 20px grey;
+
+    z-index:                2;
+}
+
+/* CONTENT ........................................................................ */
+
+div#contentbox {
+    /* top:                    10rem; */
+    /* bottom:                 10rem; */
+    width:                  70%;
+    /* height:                 70rem; */
+    position:               relative;
+    background-color:       white;
+    /* margin:                 8.85rem auto 4.5rem auto; */
+    margin:                 8.85rem auto .5rem auto;
+
+    box-shadow:             0px 0px 20px grey;
+
+    z-index:                1;
+}
+/* div.header-img { */
+    /* position:               absolute;
+    clip:                   rect(0px,1500px,490px,0px); */
+/* } */
+div.content-text {
+    position:               relative;
+    /* padding:                500px 5rem 1rem 5rem; */
+    padding:                2rem 2rem 1rem 2rem;
+    text-align:             center;
+    /* width:                  100%; */
+}
+#area1 {
+    width:                  99%;
+}
+
+
+/* CMS - Login .................................................................... */
+
+div#login {
+    width:                  30%;
+    min-width:              15rem;
+    /* min-height:             15rem; */
+    background-color:       white;
+    text-align:             center;
+
+    margin:                 10rem auto;
+    padding:                1rem 1rem 2rem 1rem;
+
+    box-shadow:             0 0 20px grey;
 }
