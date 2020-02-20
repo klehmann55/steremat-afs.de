@@ -4,11 +4,15 @@
     </a>
 
     <div class="lang">
-        <?php if ( !isset($design) || $design == 'light' ) { ?>
-            <a href="cms.php?p=<?= $_GET['p']; ?>&d=dark" >Dark</a>
+    <?php 
+        if ( isset($_GET['d']) && $_GET['d'] == 'dark' || isset($_COOKIE['design']) && $_COOKIE['design'] == 'dark' ) { ?>
+            <a href="cms.php?p=<?= $_GET['p']; ?>&l=en&d=light">Light</a> 
         <?php }
+        elseif ( isset($_GET['d']) && $_GET['d'] == 'light' || isset($_COOKIE['design']) && $_COOKIE['design'] == 'light' ) { ?>
+            <a href="cms.php?p=<?= $_GET['p']; ?>&l=en&d=dark">Dark</a>
+        <?php } 
         else { ?>
-            <a href="cms.php?p=<?= $_GET['p']; ?>&d=light">Light</a>            
+            <a href="cms.php?p=<?= $_GET['p']; ?>&l=en&d=dark">Dark</a>
         <?php } ?>
 
         <a href="cms.php?p=<?= $_GET['p']; ?>" class="lang">DEU</a>

@@ -16,9 +16,9 @@
     }
     elseif ( isset($_GET['d']) and $_GET['d'] == 'light' ) {
         setcookie('design', 'light', time()+86400);
-        header('Location: index.php?p='.$_GET['p']);
+        header('Location: cms.php?p='.$_GET['p'].'&l='.$_GET['l']);
         exit;         
-    } 
+    }  
 
     // Include the database configuration file
     require('../sql/dbconfig.php');
@@ -149,7 +149,7 @@
     </div>
 
     <?php
-        if ( isset($_GET['l']) ) {
+        if ( $_GET['l'] == 'en' ) {
             include("../includes/navigation_cms_en.php");
         }
         else {

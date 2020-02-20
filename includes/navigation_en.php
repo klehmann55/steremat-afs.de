@@ -4,7 +4,7 @@
     </a>
 
     <div class="lang">
-    <?php 
+        <?php 
         if ( isset($_GET['d']) && $_GET['d'] == 'dark' || isset($_COOKIE['design']) && $_COOKIE['design'] == 'dark' ) { ?>
             <a href="index.php?p=<?= $_GET['p']; ?>&l=en&d=light">Light</a> 
         <?php }
