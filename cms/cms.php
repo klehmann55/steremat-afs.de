@@ -10,16 +10,30 @@
         $_GET['p'] = "startseite";
     }
 
+    // SET dark/light $design-variable
+    if ( isset($_GET['d']) and $_GET['d'] == 'dark' ) {
+        setcookie('design', 'dark', time()+86400);
+    }
+    elseif ( isset($_GET['d']) and $_GET['d'] == 'light' ) {
+        setcookie('design', 'light', time()+86400);
+        header('Location: index.php?p='.$_GET['p']);
+        exit;         
+    } 
+
     // Include the database configuration file
     require('../sql/dbconfig.php');
     require('../sql/class.db.php');
 
-    // Include upload-script
-    require('../sql/img_up.php');
-
     // Create database connection
     $db = new Db($dbms, $host, $port, $dbname, $username, $password);
-    $sel = $db->selectContent('"' . $_GET['p'] . '"');
+
+    // Select DE or EN Content, if $_GET['l'] isset
+    if ( isset($_GET['l']) ) {
+        $sel = $db->selectContentEN('"' . $_GET['p'] . '"');
+    }
+    else {
+        $sel = $db->selectContent('"' . $_GET['p'] . '"');
+    }
 ?>
 
 <!DOCTYPE html>
@@ -33,20 +47,48 @@
     <meta name="viewport" content="device-width, initial-scale=1.0">
 
     <link rel="icon" type="image/png" href="../img/logo/steremat-favicon.png">
-    <link rel="stylesheet" type="text/css" href="../css/styles.css">
+
+    <?php
+        if ( isset($_GET['d']) && $_GET['d'] == 'dark' || isset($_COOKIE['design']) && $_COOKIE['design'] == 'dark' )  { ?>
+            <link rel="stylesheet" type="text/css" href="../css/styles_dark.css">
+    <?php }
+        elseif ( isset($_GET['d']) && $_GET['d'] == 'light' || isset($_COOKIE['design']) && $_COOKIE['design'] == 'light' ) { ?>
+            <link rel="stylesheet" type="text/css" href="../css/styles.css">
+    <?php }
+        else { ?>
+            <link rel="stylesheet" type="text/css" href="../css/styles.css">
+    <?php } ?>
+
     <script src="../js/javascript.js"></script>
 
     <script type="text/javascript" src="../nicEdit/nicEdit.js"></script>
+    <!-- <script src="//cdn.ckeditor.com/4.13.1/full-all/ckeditor.js"></script> -->
+    <!-- <script src="https://cdn.ckeditor.com/ckeditor5/16.0.0/classic/ckeditor.js"></script> -->
+    <!-- <script src="https://cdn.ckeditor.com/ckeditor5/16.0.0/inline/ckeditor.js"></script> -->
     <script type="text/javascript">
 	    // bkLib.onDomLoaded(function() {  
         //     new nicEditor({fullPanel : true, iconsPath : '../nicEdit/nicEditorIcons.gif', maxWidth : 500}).panelInstance('area1').oninput;
         // });
 
         document.addEventListener("DOMContentLoaded", bkLib1);
+        // document.addEventListener("DOMContentLoaded", bkLib2);
 
         function bkLib1() {
            var areaone = document.getElementById('area1');
            areaone.oninput = new nicEditor({fullPanel : true, iconsPath : '../nicEdit/nicEditorIcons.gif'}).panelInstance('area1');
+        }
+
+        function bkLib2() {
+            CKEDITOR.replace( 'area1' );
+        //     // ClassicEditor
+        //     // InlineEditor
+        //                         .create( document.querySelector( '#area1' ) )
+        //                         .then( editor => {
+        //                                 console.log( editor );
+        //                         } )
+        //                         .catch( error => {
+        //                                 console.error( error );
+        //                         } );
         }
     </script>
 						
@@ -56,33 +98,50 @@
 
     <div id="contentbox">  
         <div class="content-text">
-
+        
             <div class="header-img">
-                <img src="../img/pixabay/faeuste1.jpg" alt="Zusammenarbeit Fäuste" width="100%">
+                <img src="../<?= $sel[0]['imgpath']; ?>" alt="../<?= $sel[0]['imgname']; ?>" width="100%">
             </div>
-
-            <form action="<?= $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
+            <br>
+            <form action="../sql/img_up.php" method="post" enctype="multipart/form-data">
                 <input type="file" name="img" size="40">
+                <input type="hidden" id="p" name="p" value="<?= $_GET['p']; ?>">
                 <button type="submit">Bild hochladen</button>
             </form>
 
             <br>
-
+            <!-- // if(!empty($sel)) {
+                            //     echo $sel[0]['content'];
+                            // } 
+                            // else {
+                            //     echo "Noch leer: Bitte Inhalt einfügen.";
+                            // } -->
             <form action="../sql/update_content.php" method="post">
-                <textarea id="area1" name="area1">
-                    <?php 
+                
+                <textarea id="area1" name="area1">                
+                    <?php
                         if(!empty($sel)) {
-                            echo $sel[0]['content'];
-                        } 
-                        else {
-                            echo "Noch leer: Bitte Inhalt einfügen.";
+                            if ( isset($_GET['l']) ) {
+                                echo $sel[0]['content_en'];
+                            }
+                            else {
+                                echo $sel[0]['content'];
+                            }
                         }
-                    ?>
+                        else {
+                                echo "Noch leer: Bitte Inhalt einfügen.";
+                        }
+                    ?>           
                 </textarea>
-
+                
                 <br>
                 
                 <input type="hidden" id="p" name="p" value="<?= $_GET['p']; ?>">
+                <?php
+                    if ( isset($_GET['l']) ) { ?>
+                        <input type="hidden" id="l" name="l" value="<?= $_GET['l']; ?>">
+                <?php } ?>              
+
                 <button type="submit">Daten ändern</button>
             </form>
 
@@ -90,7 +149,12 @@
     </div>
 
     <?php
-        include("../includes/navigation_cms.php");
+        if ( isset($_GET['l']) ) {
+            include("../includes/navigation_cms_en.php");
+        }
+        else {
+            include("../includes/navigation_cms.php");
+        }
     ?>
 
 </body>

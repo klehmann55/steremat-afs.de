@@ -11,38 +11,26 @@
 
 * {
     box-sizing: 		    border-box;
-    /* margin:                 0; */
     padding:                0;
-}
-html, body {
-    /* height:                 100%; */
 }
 body {
     margin:                 0;
     font-size: 			    16px;
     font-family: 		    'Arial', sans-serif;
     width:                  100%;
-    background-color:       rgb(190,190,190);
-    background-image:       url("../img/pixabay/tv-tower.jpg");
+    /* background-color:       rgb(190,190,190); */
+    /* background-color:       rgb(27, 95, 255); */
+    /* background-image: linear-gradient(to top, rgb(100, 100, 250) 0%, black 50%); */
+    /* background-image: linear-gradient(to top, black 0%, rgb(100, 100, 250) 50%); */
+    background-image: linear-gradient(to top, rgb(100, 100, 250) 40%, white 100%);
+    /* background-image: linear-gradient(to top, white 0%, rgb(100, 100, 250) 70%); */
+    /* background-image:       url("../img/pixabay/tv-tower.jpg"); */
     /* background-image:       url("../img/pixabay/brandenburg-gate.jpg"); */
     /* background-image:       url("../img/pixabay/berlin.jpg"); */
     /* background-image:       url("../img/pixabay/brandenburg-gate1.jpg"); */
     background-repeat:      no-repeat;
     background-attachment:  fixed;
-}
-ul#left {
-    padding:                0;
-    left:                   -.6rem;
-    position:               relative;
-    width:                  520px;
-    float:                  left;
-}
-ul#right {
-    padding:                0;
-    /* right:                  .6rem; */
-    position:               relative;
-    /* width:                  520px; */
-    float:                  right;
+    background-size:        cover;
 }
 a {
     color:                  black;
@@ -60,6 +48,15 @@ a:target {
 #active {
     color:                  rgb(100, 100, 250);
 }
+div.lang {
+    right: 25px;
+    position: absolute;
+    top: 3rem;
+    font-weight: bold;
+}
+div.lang a {
+    padding-left: 1rem;
+}
 h2, h3 {
     text-align:             center;
     color:                  rgb(100, 100, 250);
@@ -72,12 +69,12 @@ h2, h3 {
     width:                  20rem;
 }
 
-#navtop li {
+/* #navtop li {
     padding:                1rem;
     display:                inline;
     background-color:       white;
 
-}
+} */
 #navfooter li {
     padding:                1rem;
     display:                inline;
@@ -85,12 +82,12 @@ h2, h3 {
 }
 div#navigation-top {
     top:                    0;
-    padding:                1rem .5rem .5rem 1rem;
+    padding:                1rem .5rem 3.5rem 1rem;
     width:                  100%;
     position:               fixed;
     background-color:       white; 
 
-    box-shadow:             0px 0px 20px grey;
+    box-shadow:             0px 0px 20px rgb(0, 0, 0);
 
     z-index:                2;
 }
@@ -100,13 +97,68 @@ div#navigation-bottom {
     padding:                .5rem;
     width:                  100%;
     /* position:               fixed; */
-    position:               static;
+    /* position:               static; */
+    /* position:               absolute; */
     text-align:             center;
     background-color:       white;
 
-    box-shadow:             0px 0px 20px grey;
+    /* box-shadow:             0px 0px 20px grey; */
 
     z-index:                2;
+}
+
+#menu {
+    font-size:1rem;
+    position:absolute;
+    margin-left: -10px;
+}
+#menu ul {
+    list-style-type:none;
+    list-style-image:none;
+    margin:0;
+    padding-left:0rem;
+}
+#menu li.topmenu {
+    float:left;
+}
+.topmenu a {
+    float:left;
+    /* width:120px; */
+    text-align:center;
+}
+.topmenu ul{
+    display:none;
+}
+.topmenu a, .submenu a{
+    padding:15px;
+    color:rgb(0, 0, 0);
+    /* font-weight:bold; */
+    text-decoration:none;
+    background-color:#ffffff;
+    margin:0;
+}
+.submenu a{
+    font-size:10px;
+    width:100%;
+    position:relative;
+    clear:both; /* special IE6 */
+    text-align: left;
+}
+#menu a:hover, .topmenu.on a {
+    color:rgb(100, 100, 250);
+    background-color:rgb(255, 255, 255) !important;
+}
+.topmenu:hover ul {
+    display:block;
+    z-index:500;
+}
+ul#right {
+    padding:                0;
+    /* right:                  -87rem; */
+    right:                  10px;
+    position:               fixed;
+    /* width:                  520px; */
+    /* float:                  right; */
 }
 
 /* CONTENT ........................................................................ */
@@ -114,21 +166,28 @@ div#navigation-bottom {
 div#contentbox {
     /* top:                    10rem; */
     /* bottom:                 10rem; */
-    width:                  70%;
-    /* height:                 70rem; */
+    width:                  50%;
+    min-height:                 47.8rem;
     position:               relative;
     background-color:       white;
     /* margin:                 8.85rem auto 4.5rem auto; */
-    margin:                 8.85rem auto .5rem auto;
+    margin:                 10rem auto 2rem auto;
 
-    box-shadow:             0px 0px 20px grey;
+    /* box-shadow:             0px 0px 20px grey; */
+    border-radius:          5px;
 
     z-index:                1;
 }
-/* div.header-img { */
-    /* position:               absolute;
-    clip:                   rect(0px,1500px,490px,0px); */
-/* } */
+div.header-img {
+    /* position:               absolute; */
+    /* clip:                   rect(0px,1500px,490px,0px); */
+    width: 118%;
+    margin-left: -9%;
+    margin-top: -5%;
+}
+div.header-img img {
+    border-radius:          5px;
+}
 div.content-text {
     position:               relative;
     /* padding:                500px 5rem 1rem 5rem; */
@@ -136,8 +195,20 @@ div.content-text {
     text-align:             center;
     /* width:                  100%; */
 }
+div#text {
+    padding-left:           6rem;
+    padding-right:          6rem;
+}
 #area1 {
-    width:                  99%;
+
+    width:                  100%;
+    /* display:                block; */
+}
+.nicEdit-main {
+    overflow:               scroll !important;
+    height:                 30rem;
+    /* margin-left:            10%;
+    margin-right:           10%; */
 }
 
 
@@ -153,5 +224,7 @@ div#login {
     margin:                 10rem auto;
     padding:                1rem 1rem 2rem 1rem;
 
-    box-shadow:             0 0 20px grey;
+    /* box-shadow:             0 0 20px grey; */
+
+    border-radius:          5px;
 }
