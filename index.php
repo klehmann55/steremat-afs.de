@@ -4,15 +4,29 @@
         $_GET['p'] = "startseite";
     }
 
-    // SET dark/light $design-variable
+    // SET dark/light $_cookie-variable
     if ( isset($_GET['d']) and $_GET['d'] == 'dark' ) {
         setcookie('design', 'dark', time()+86400);
+        header('Location: index.php?p='.$_GET['p']);
+        exit;
     }
     elseif ( isset($_GET['d']) and $_GET['d'] == 'light' ) {
         setcookie('design', 'light', time()+86400);
-        header('Location: index.php?p='.$_GET['p'].'&l='.$_GET['l']);
+        header('Location: index.php?p='.$_GET['p']);
         exit;         
     } 
+
+    // SET deu/eng $_cookie-variable
+    if ( isset($_GET['l']) && $_GET['l'] == 'en' ) {
+        setcookie('lang', 'en', time()+86400);
+        header('Location: index.php?p='.$_GET['p']);
+        exit;
+    }
+    elseif ( isset($_GET['l']) && $_GET['l'] == 'de' ) {
+        setcookie('lang', 'de', time()+86400);
+        header('Location: index.php?p='.$_GET['p']);
+        exit;        
+    }
         
     // Include the database configuration file
     require('sql/dbconfig.php');
@@ -22,10 +36,10 @@
     $db = new Db($dbms, $host, $port, $dbname, $username, $password);
 
     // Select DE or EN Content, if $_GET['l'] isset
-    if ( isset($_GET['l']) ) {
+    if ( isset($_GET['l']) && $_GET['l'] == 'en' || isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ) {
         $sel = $db->selectContentEN('"' . $_GET['p'] . '"');
     }
-    else {
+    elseif ( isset($_GET['l']) && $_GET['l'] == 'de' || isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'de' ) {
         $sel = $db->selectContent('"' . $_GET['p'] . '"');
     }
     
@@ -68,10 +82,10 @@
             <div id="text">
                 <?php 
                     if(!empty($sel)) {
-                        if ( isset($_GET['l']) ) {
+                        if ( isset($_GET['l']) && $_GET['l'] == 'en' || isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ) {
                             echo $sel[0]['content_en'];
                         }
-                        else {
+                        elseif ( isset($_GET['l']) && $_GET['l'] == 'de' || isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'de' ) {
                             echo $sel[0]['content'];
                         }
                     } 
@@ -84,12 +98,7 @@
     </div>
 
     <?php
-        if ( $_GET['l'] == 'en' ) {
-            include("includes/navigation_en.php");
-        }
-        else {
-            include("includes/navigation.php");
-        }        
+        include("includes/navigation.php");
     ?>
 
 </body>
