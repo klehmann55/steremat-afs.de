@@ -7,7 +7,7 @@ require('class.db.php');
 // Create database connection
 $db = new Db($dbms, $host, $port, $dbname, $username, $password);
 
-// Select DE or EN Content, if $_GET['l'] isset
+// Select DE or EN Content, if $_POST['l'] isset
 if ( isset($_POST['l']) ) {
     $sel = $db->selectContentEN('"' . $_POST['p'] . '"');
 }
@@ -29,7 +29,7 @@ if (empty($sel)) {
     }
 }
 
-// Update Content, if DB-Selection is isset
+// Update Content, if $_POST is isset
 else {
     if(isset($_POST)) {
         if ( isset($_POST['l']) ) {

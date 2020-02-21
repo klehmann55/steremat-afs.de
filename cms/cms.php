@@ -152,8 +152,8 @@
                 
                 <input type="hidden" id="p" name="p" value="<?= $_GET['p']; ?>">
                 <?php
-                    if ( isset($_GET['l']) ) { ?>
-                        <input type="hidden" id="l" name="l" value="<?= $_GET['l']; ?>">
+                    if ( isset($_GET['l']) && $_GET['l'] == 'en' || isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ) { ?>
+                        <input type="hidden" id="l" name="l" value="<?= $_COOKIE['lang'] ?>">
                 <?php } ?>              
 
                 <button type="submit">Daten ändern</button>
