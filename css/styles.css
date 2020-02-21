@@ -161,6 +161,19 @@ ul#right {
     /* float:                  right; */
 }
 
+div.design-button {
+    background-image: url(../img/logo/Design_Button.png);
+    background-repeat: no-repeat;
+    background-size: 1.3rem;
+    height: 105%;
+    width: 30%;
+    position: absolute;
+    top: 0;
+}
+div.design-button:hover {
+    background-image: url(../img/logo/Design_Button_blau.png);
+}
+
 /* CONTENT ........................................................................ */
 
 div#contentbox {
@@ -212,6 +225,7 @@ div#text {
 }
 
 /* COOKIE Statement ............................................................... */
+
 div#cookie-statement {
     position: fixed;
     text-align: center;

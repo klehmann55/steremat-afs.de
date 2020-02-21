@@ -9,13 +9,13 @@ if ( isset($_GET['l']) && $_GET['l'] == 'en' || isset($_COOKIE['lang']) && $_COO
         <div class="lang">
             <?php 
             if ( isset($_GET['d']) && $_GET['d'] == 'dark' || isset($_COOKIE['design']) && $_COOKIE['design'] == 'dark' ) { ?>
-                <a href="index.php?p=<?= $_GET['p']; ?>&l=en&d=light">Dark</a> 
+                <a href="index.php?p=<?= $_GET['p']; ?>&l=en&d=light"><div class="design-button"></div></a> 
             <?php }
             elseif ( isset($_GET['d']) && $_GET['d'] == 'light' || isset($_COOKIE['design']) && $_COOKIE['design'] == 'light' ) { ?>
-                <a href="index.php?p=<?= $_GET['p']; ?>&l=en&d=dark">Light</a>
+                <a href="index.php?p=<?= $_GET['p']; ?>&l=en&d=dark"><div class="design-button"></div></a>
             <?php } 
             else { ?>
-                <a href="index.php?p=<?= $_GET['p']; ?>&l=en&d=dark">Light</a>
+                <a href="index.php?p=<?= $_GET['p']; ?>&l=en&d=dark"><div class="design-button"></div></a>
             <?php } ?>
 
             <a href="index.php?p=<?= $_GET['p']; ?>&l=de" class="lang">ENG</a>
@@ -83,13 +83,13 @@ else {
         <div class="lang">
             <?php 
             if ( isset($_GET['d']) && $_GET['d'] == 'dark' || isset($_COOKIE['design']) && $_COOKIE['design'] == 'dark' ) { ?>
-                <a href="index.php?p=<?= $_GET['p']; ?>&d=light">Dunkel</a> 
+                <a href="index.php?p=<?= $_GET['p']; ?>&d=light"><div class="design-button"></div></a> 
             <?php }
             elseif ( isset($_GET['d']) && $_GET['d'] == 'light' || isset($_COOKIE['design']) && $_COOKIE['design'] == 'light' ) { ?>
-                <a href="index.php?p=<?= $_GET['p']; ?>&d=dark">Hell</a>
+                <a href="index.php?p=<?= $_GET['p']; ?>&d=dark"><div class="design-button"></div></a>
             <?php } 
             else { ?>
-                <a href="index.php?p=<?= $_GET['p']; ?>&d=dark">Hell</a>
+                <a href="index.php?p=<?= $_GET['p']; ?>&d=dark"><div class="design-button"></div></a>
             <?php } ?>
             
             <a href="index.php?p=<?= $_GET['p']; ?>&l=en">DEU</a>
