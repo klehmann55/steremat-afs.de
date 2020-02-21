@@ -57,15 +57,7 @@ a:target {
     /* color:                  rgb(123, 123, 255); */
     color:                  rgb(130, 130, 255);
 }
-div.lang {
-    right: 25px;
-    position: absolute;
-    top: 3rem;
-    font-weight: bold;
-}
-div.lang a {
-    padding-left: 1rem;
-}
+
 h2, h3 {
     text-align:             center;
     /* color:                  rgb(100, 100, 250); */
@@ -179,8 +171,18 @@ ul#right {
     /* float:                  right; */
 }
 
+div.lang {
+    right: 25px;
+    position: absolute;
+    top: 2rem;
+    font-weight: bold;
+}
+div.lang a {
+    padding-left: .9rem;
+}
+
 div.design-button {
-    background-image: url(../img/logo/Design_Button.png);
+    background-image: url(../img/logo/Design_Button_grau.png);
     background-repeat: no-repeat;
     background-size: 1.3rem;
     height: 105%;
@@ -191,6 +193,38 @@ div.design-button {
 div.design-button:hover {
     background-image: url(../img/logo/Design_Button_blau.png);
 }
+
+div.easy-language-button {
+    background-image: url(../img/logo/Alpha-Siegel_grau.png);
+    background-repeat: no-repeat;
+    background-size: 4rem;
+    height: 9%;
+    width: 3.5%;
+    position: fixed;
+    right: 6rem;
+    margin-right: 2.2rem;
+    top: 1rem;
+    z-index: 5;
+}
+div.easy-language-button:hover {
+    background-image: url(../img/logo/Alpha-Siegel_blau.png);
+}
+
+div.easy-language-button-true {
+    background-image: url(../img/logo/Alpha-Siegel_blau.png);
+    background-repeat: no-repeat;
+    background-size: 4rem;
+    height: 9%;
+    width: 3.5%;
+    position: fixed;
+    right: 6rem;
+    margin-right: 2.2rem;
+    top: 1rem;
+    z-index: 5;
+}
+/* div.easy-language-button-true:hover {
+    background-image: url(../img/logo/Alpha-Siegel_grau.png);
+} */
 
 /* CONTENT ........................................................................ */
 

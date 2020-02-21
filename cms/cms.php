@@ -25,6 +25,7 @@
     // SET deu/eng $_cookie-variable
     if ( isset($_GET['l']) && $_GET['l'] == 'en' ) {
         setcookie('lang', 'en', time()+86400);
+        setcookie('ls', 'true', time()-86400);
         header('Location: cms.php?p='.$_GET['p']);
         exit;
     }
@@ -32,7 +33,19 @@
         setcookie('lang', 'de', time()+86400);
         header('Location: cms.php?p='.$_GET['p']);
         exit;        
-    }  
+    }
+    
+    // SET simple-language $_cookie-variable
+    if ( isset($_GET['ls']) && $_GET['ls'] == 'true' ) {
+        setcookie('ls', 'true', time()+86400);
+        header('Location: cms.php?p='.$_GET['p']);
+        exit;
+    }
+    elseif ( isset($_GET['ls']) && $_GET['ls'] == 'false' ) {
+        setcookie('ls', 'true', time()-86400);
+        header('Location: cms.php?p='.$_GET['p']);
+        exit;        
+    }
 
     // Include the database configuration file
     require('../sql/dbconfig.php');
@@ -42,10 +55,16 @@
     $db = new Db($dbms, $host, $port, $dbname, $username, $password);
 
     // Select DE or EN Content, if $_GET['l'] isset
-    if ( isset($_GET['l']) && $_GET['l'] == 'en' || isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ) {
-        $sel = $db->selectContentEN('"' . $_GET['p'] . '"');
+    if ( isset($_GET['ls']) && $_GET['ls'] == 'true' || isset($_COOKIE['ls']) && $_COOKIE['ls'] == 'true' ) {
+        $sel = $db->selectContentLS('"' . $_GET['p'] . '"');
     }
+    elseif ( isset($_GET['l']) && $_GET['l'] == 'en' || isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ) {
+        $sel = $db->selectContentEN('"' . $_GET['p'] . '"');
+    }    
     elseif ( isset($_GET['l']) && $_GET['l'] == 'de' || isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'de' ) {
+        $sel = $db->selectContent('"' . $_GET['p'] . '"');
+    }    
+    else {
         $sel = $db->selectContent('"' . $_GET['p'] . '"');
     }
 ?>
@@ -124,27 +143,28 @@
             </form>
 
             <br>
-            <!-- // if(!empty($sel)) {
-                            //     echo $sel[0]['content'];
-                            // } 
-                            // else {
-                            //     echo "Noch leer: Bitte Inhalt einfügen.";
-                            // } -->
+
             <form action="../sql/update_content.php" method="post">
                 
                 <textarea id="area1" name="area1">                
                     <?php
-                        if(!empty($sel)) {
-                            if ( isset($_GET['l']) && $_GET['l'] == 'en' || isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ) {
-                                echo $sel[0]['content_en'];
-                            }
-                            elseif ( isset($_GET['l']) && $_GET['l'] == 'de' || isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'de' ) {
-                                echo $sel[0]['content'];
-                            }
+                    if ( !empty($sel) ) {
+                        if ( isset($_GET['ls']) && $_GET['ls'] == 'true' || isset($_COOKIE['ls']) && $_COOKIE['ls'] == 'true' ) {
+                            echo $sel[0]['content_ls'];
+                        }                        
+                        elseif ( isset($_GET['l']) && $_GET['l'] == 'en' || isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ) {
+                            echo $sel[0]['content_en'];
+                        }
+                        elseif ( isset($_GET['l']) && $_GET['l'] == 'de' || isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'de' ) {
+                            echo $sel[0]['content'];
                         }
                         else {
-                                echo "Noch leer: Bitte Inhalt einfügen.";
+                            echo $sel[0]['content'];
                         }
+                    }
+                    else {
+                        echo "<br>Noch leer, bitte Inhalt einfügen.";
+                    }
                     ?>           
                 </textarea>
                 
@@ -154,7 +174,11 @@
                 <?php
                     if ( isset($_GET['l']) && $_GET['l'] == 'en' || isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ) { ?>
                         <input type="hidden" id="l" name="l" value="<?= $_COOKIE['lang'] ?>">
-                <?php } ?>              
+                <?php } ?>
+                <?php
+                    if ( isset($_GET['ls']) && $_GET['ls'] == 'true' || isset($_COOKIE['ls']) && $_COOKIE['ls'] == 'true' ) { ?>
+                        <input type="hidden" id="ls" name="ls" value="<?= $_COOKIE['ls'] ?>">
+                <?php } ?>                
 
                 <button type="submit">Daten ändern</button>
             </form>

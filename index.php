@@ -34,16 +34,30 @@
         }
     }
  
-
     // SET deu/eng $_cookie-variable
     if ( isset($_COOKIE['cookies']) && $_COOKIE['cookies'] == 'yes' ) {
         if ( isset($_GET['l']) && $_GET['l'] == 'en' ) {
             setcookie('lang', 'en', time()+86400);
+            setcookie('ls', 'true', time()-86400);
             header('Location: index.php?p='.$_GET['p']);
             exit;
         }
         elseif ( isset($_GET['l']) && $_GET['l'] == 'de' ) {
             setcookie('lang', 'de', time()+86400);
+            header('Location: index.php?p='.$_GET['p']);
+            exit;        
+        }
+    }
+
+    // SET simple-language $_cookie-variable
+    if ( isset($_COOKIE['cookies']) && $_COOKIE['cookies'] == 'yes' ) {
+        if ( isset($_GET['ls']) && $_GET['ls'] == 'true' ) {
+            setcookie('ls', 'true', time()+86400);
+            header('Location: index.php?p='.$_GET['p']);
+            exit;
+        }
+        elseif ( isset($_GET['ls']) && $_GET['ls'] == 'false' ) {
+            setcookie('ls', 'true', time()-86400);
             header('Location: index.php?p='.$_GET['p']);
             exit;        
         }
@@ -57,11 +71,14 @@
     $db = new Db($dbms, $host, $port, $dbname, $username, $password);
 
     // Select DE or EN Content, if $_GET['l'] isset
-    if ( isset($_GET['l']) && $_GET['l'] == 'de' || isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'de' ) {
-        $sel = $db->selectContent('"' . $_GET['p'] . '"');
+    if ( isset($_GET['ls']) && $_GET['ls'] == 'true' || isset($_COOKIE['ls']) && $_COOKIE['ls'] == 'true' ) {
+        $sel = $db->selectContentLS('"' . $_GET['p'] . '"');
     }
     elseif ( isset($_GET['l']) && $_GET['l'] == 'en' || isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ) {
         $sel = $db->selectContentEN('"' . $_GET['p'] . '"');
+    }
+    elseif ( isset($_GET['l']) && $_GET['l'] == 'de' || isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'de' ) {
+        $sel = $db->selectContent('"' . $_GET['p'] . '"');
     }
     else {
         $sel = $db->selectContent('"' . $_GET['p'] . '"');
@@ -105,8 +122,11 @@
             </div>
             <div id="text">
                 <?php 
-                    if(!empty($sel)) {
-                        if ( isset($_GET['l']) && $_GET['l'] == 'en' || isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ) {
+                    if ( !empty($sel) ) {
+                        if ( isset($_GET['ls']) && $_GET['ls'] == 'true' || isset($_COOKIE['ls']) && $_COOKIE['ls'] == 'true' ) {
+                            echo $sel[0]['content_ls'];
+                        }                        
+                        elseif ( isset($_GET['l']) && $_GET['l'] == 'en' || isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ) {
                             echo $sel[0]['content_en'];
                         }
                         elseif ( isset($_GET['l']) && $_GET['l'] == 'de' || isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'de' ) {

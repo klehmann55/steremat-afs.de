@@ -7,18 +7,19 @@ if ( isset($_GET['l']) && $_GET['l'] == 'en' || isset($_COOKIE['lang']) && $_COO
         </a>
 
         <div class="lang">
+
             <?php 
             if ( isset($_GET['d']) && $_GET['d'] == 'dark' || isset($_COOKIE['design']) && $_COOKIE['design'] == 'dark' ) { ?>
-                <a href="index.php?p=<?= $_GET['p']; ?>&l=en&d=light"><div class="design-button"></div></a> 
+                <a href="index.php?p=<?= $_GET['p']; ?>&d=light"><div class="design-button"></div></a> 
             <?php }
             elseif ( isset($_GET['d']) && $_GET['d'] == 'light' || isset($_COOKIE['design']) && $_COOKIE['design'] == 'light' ) { ?>
-                <a href="index.php?p=<?= $_GET['p']; ?>&l=en&d=dark"><div class="design-button"></div></a>
+                <a href="index.php?p=<?= $_GET['p']; ?>&d=dark"><div class="design-button"></div></a>
             <?php } 
             else { ?>
-                <a href="index.php?p=<?= $_GET['p']; ?>&l=en&d=dark"><div class="design-button"></div></a>
+                <a href="index.php?p=<?= $_GET['p']; ?>&d=dark"><div class="design-button"></div></a>
             <?php } ?>
 
-            <a href="index.php?p=<?= $_GET['p']; ?>&l=de" class="lang">ENG</a>
+            <a href="index.php?p=<?= $_GET['p']; ?>&l=de">ENG</a>
         </div>
 
         <nav id="menu">
@@ -81,6 +82,14 @@ else {
         </a>
 
         <div class="lang">
+            <?php
+            if ( isset($_GET['ls']) && $_GET['ls'] == 'true' || isset($_COOKIE['ls']) && $_COOKIE['ls'] == 'true') { ?>
+                <a href="index.php?p=<?= $_GET['p']; ?>&ls=false"><div class="easy-language-button-true"></div></a>
+            <?php }
+            else { ?>
+                <a href="index.php?p=<?= $_GET['p']; ?>&ls=true"><div class="easy-language-button"></div></a>
+            <?php } ?>
+
             <?php 
             if ( isset($_GET['d']) && $_GET['d'] == 'dark' || isset($_COOKIE['design']) && $_COOKIE['design'] == 'dark' ) { ?>
                 <a href="index.php?p=<?= $_GET['p']; ?>&d=light"><div class="design-button"></div></a> 

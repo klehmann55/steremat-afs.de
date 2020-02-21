@@ -36,6 +36,14 @@ class Db{
 		$this -> data = $this -> statement -> fetchAll();
 		return $this -> data;
 	}
+	// Select Content LS ............................................................................
+	function selectContentLS($static) {
+		$this -> sql = 'SELECT content_ls, imgpath, imgname FROM content WHERE static =' . $static;
+		$this -> statement = $this -> db -> prepare($this -> sql);
+		$this -> statement -> execute();
+		$this -> data = $this -> statement -> fetchAll();
+		return $this -> data;
+	}
 	// Insert Content
 	function insertContent($insert, $static) {
 		$this -> sql = 'INSERT INTO content (content, static) VALUES ('.$insert.', '.$static.')';
@@ -45,6 +53,12 @@ class Db{
 	// Insert Content ENG
 	function insertContentEN($insert, $static) {
 		$this -> sql = 'INSERT INTO content (content_en, static) VALUES ('.$insert.', '.$static.')';
+		$this -> statement = $this -> db -> prepare($this -> sql);
+		$this -> statement -> execute();
+	}
+	// Insert Content LS
+	function insertContentLS($insert, $static) {
+		$this -> sql = 'INSERT INTO content (content_ls, static) VALUES ('.$insert.', '.$static.')';
 		$this -> statement = $this -> db -> prepare($this -> sql);
 		$this -> statement -> execute();
 	}
@@ -62,6 +76,15 @@ class Db{
 		// $this -> sql = 'UPDATE content SET content="' . $update . '" WHERE static=' . $static;
 		// $this -> sql = 'UPDATE content SET content=' . $update . ' WHERE static=' . $static;
 		$this -> sql = 'UPDATE content SET content_en= :update WHERE static=' . $static;
+		$this -> statement = $this -> db -> prepare($this -> sql);
+		$this-> statement -> bindValue(':update', $update); 
+		$this -> statement -> execute();
+	}
+	// Update Content LS
+	function updateContentLS($update, $static) {
+		// $this -> sql = 'UPDATE content SET content="' . $update . '" WHERE static=' . $static;
+		// $this -> sql = 'UPDATE content SET content=' . $update . ' WHERE static=' . $static;
+		$this -> sql = 'UPDATE content SET content_ls= :update WHERE static=' . $static;
 		$this -> statement = $this -> db -> prepare($this -> sql);
 		$this-> statement -> bindValue(':update', $update); 
 		$this -> statement -> execute();

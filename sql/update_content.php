@@ -11,6 +11,9 @@ $db = new Db($dbms, $host, $port, $dbname, $username, $password);
 if ( isset($_POST['l']) ) {
     $sel = $db->selectContentEN('"' . $_POST['p'] . '"');
 }
+elseif ( isset($_POST['ls']) ) {
+    $sel = $db->selectContentLS('"' . $_POST['p'] . '"');
+}
 else {
     $sel = $db->selectContent('"' . $_POST['p'] . '"');
 }
@@ -19,6 +22,11 @@ else {
 if (empty($sel)) {
     if ( isset($_POST['l']) ) {
         $db->insertContentEN('"' . $_POST['area1'] . '"', '"' . $_POST['p'] . '"');
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+        exit;
+    }
+    elseif ( isset($_POST['ls']) ) {
+        $db->insertContentLS('"' . $_POST['area1'] . '"', '"' . $_POST['p'] . '"');
         header('Location: ' . $_SERVER['HTTP_REFERER']);
         exit;
     }
@@ -34,6 +42,11 @@ else {
     if(isset($_POST)) {
         if ( isset($_POST['l']) ) {
             $db->updateContentEN($_POST['area1'], '"' . $_POST['p'] . '"');
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+            exit;
+        }
+        elseif ( isset($_POST['ls']) ) {
+            $db->updateContentLS($_POST['area1'], '"' . $_POST['p'] . '"');
             header('Location: ' . $_SERVER['HTTP_REFERER']);
             exit;
         }
