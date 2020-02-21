@@ -211,6 +211,32 @@ div#text {
     margin-right:           10%; */
 }
 
+/* COOKIE Statement ............................................................... */
+div#cookie-statement {
+    position: fixed;
+    text-align: center;
+    background-color: darkblue;
+    color: white;
+    /* margin: 20rem 40% 20rem auto; */
+    /* margin-left: 35%; */
+    padding: 2rem;
+    bottom: 40%;
+    z-index: 2;
+    width: 100%
+}
+div#cookie-statement a {
+    color: white;
+    text-decoration: underline;
+}
+div#cookie-statement a:hover {
+    color:                  rgb(100, 100, 250);
+}
+div#cookie-statement a:active {
+    color:                  rgb(100, 100, 250);
+}
+div#cookie-statement a:target {
+    color:                  rgb(100, 100, 250);
+}
 
 /* CMS - Login .................................................................... */
 
