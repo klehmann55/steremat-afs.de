@@ -20,6 +20,9 @@ class Db{
 		$this -> db -> query('SET NAMES utf8');
 	}
 
+
+
+
 	// Select Content ............................................................................
 	function selectContent($static) {
 		$this -> sql = 'SELECT content, imgpath, imgname FROM content WHERE static =' . $static;
@@ -44,6 +47,9 @@ class Db{
 		$this -> data = $this -> statement -> fetchAll();
 		return $this -> data;
 	}
+
+
+
 	// Insert Content
 	function insertContent($insert, $static) {
 		$this -> sql = 'INSERT INTO content (content, static) VALUES ('.$insert.', '.$static.')';
@@ -62,6 +68,9 @@ class Db{
 		$this -> statement = $this -> db -> prepare($this -> sql);
 		$this -> statement -> execute();
 	}
+
+
+
 	// Update Content
 	function updateContent($update, $static) {
 		// $this -> sql = 'UPDATE content SET content="' . $update . '" WHERE static=' . $static;
@@ -90,6 +99,8 @@ class Db{
 		$this -> statement -> execute();
 	}
 
+
+
 	// Select User Data ............................................................................
 	function selectUser($user) {
 		$this -> sql = 'SELECT uname, pswd FROM user WHERE uname =' . $user;
@@ -98,6 +109,8 @@ class Db{
 		$this -> data = $this -> statement -> fetchAll();
 		return $this -> data;
 	}
+
+
 
 	// Select Image ............................................................................
 	function selectImage($static) {
@@ -113,5 +126,13 @@ class Db{
 		$this -> sql = 'UPDATE content SET imgpath="' . $path . '", imgname="'. $name .'" WHERE static =' . $static;  
 		$this -> statement = $this -> db -> prepare($this -> sql);
 		$this -> statement -> execute();	
+	}
+
+
+	// Insert Feedback
+	function insertFeedback($name, $feedback) {
+		$this -> sql = 'INSERT INTO feedback (name, feedback) VALUES ('.$name.', '.$feedback.')';
+		$this -> statement = $this -> db -> prepare($this -> sql);
+		$this -> statement -> execute();
 	}
 }

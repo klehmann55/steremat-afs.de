@@ -3,7 +3,7 @@
 if ( isset($_GET['l']) && $_GET['l'] == 'en' || isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ) { ?>
     <div id="navigation-top">
         <a href="index.php">
-            <img id="logo" alt="Steremat Logo" src="img/logo/Logo_steremat_wBG1a.png">
+            <img id="logo" alt="Steremat Logo" src="img/logo/Logo_Steremat_wBG1a.png">
         </a>
 
         <div class="lang">
@@ -19,7 +19,7 @@ if ( isset($_GET['l']) && $_GET['l'] == 'en' || isset($_COOKIE['lang']) && $_COO
                 <a href="index.php?p=<?= $_GET['p']; ?>&d=dark"><div class="design-button"></div></a>
             <?php } ?>
 
-            <a href="index.php?p=<?= $_GET['p']; ?>&l=de">ENG</a>
+            <a href="index.php?p=<?= $_GET['p']; ?>&l=de">DEU</a>
         </div>
 
         <nav id="menu">
@@ -45,10 +45,6 @@ if ( isset($_GET['l']) && $_GET['l'] == 'en' || isset($_COOKIE['lang']) && $_COO
                     </ul>  
                 </li>
                 <li class="topmenu"><a href="index.php?p=partner" <?php if ($_GET['p'] == "partner") echo " id=\"active\""; ?> >Partners</a></li>
-            </ul>
-            <ul id="right">
-                <li class="topmenu"><a href="index.php?p=aktuelles" <?php if ($_GET['p'] == "aktuelles") echo " id=\"active\""; ?> >Current</a></li>
-                <li class="topmenu"><a href="index.php?p=publikationen" <?php if ($_GET['p'] == "publikationen") echo " id=\"active\""; ?> >Publications</a></li>
                 <li class="topmenu"><a href="index.php?p=standorte" <?php if ($_GET['p'] == "standorte") echo " id=\"active\""; ?> >Locations</a>
                     <ul>
                         <li class="submenu"><a href="index.php?p=standorte" <?php if ($_GET['p'] == "standorte") echo " id=\"active\""; ?> >Storkower</a></li>
@@ -58,6 +54,12 @@ if ( isset($_GET['l']) && $_GET['l'] == 'en' || isset($_COOKIE['lang']) && $_COO
                         <li class="submenu"><a href="index.php?p=lahnstr_70" <?php if ($_GET['p'] == "lahnstr_70") echo " id=\"active\""; ?> >Lahnstr. 70</a></li>
                     </ul>
                 </li>
+            </ul>
+            <ul id="right">
+                <li class="topmenu"><a href="feedback.php"><input type="button" value="-> FEEDBACK & Ideen <-"></a></li>
+                <li class="topmenu"><a href="index.php?p=aktuelles" <?php if ($_GET['p'] == "aktuelles") echo " id=\"active\""; ?> >Current</a></li>
+                <li class="topmenu"><a href="index.php?p=publikationen" <?php if ($_GET['p'] == "publikationen") echo " id=\"active\""; ?> >Publications</a></li>
+                
             </ul>
         </nav>
     </div>
@@ -78,16 +80,16 @@ else {
 ?>
     <div id="navigation-top">
         <a href="index.php">
-            <img id="logo" alt="Steremat Logo" src="img/logo/Logo_steremat_wBG1a.png">
+            <img id="logo" alt="Steremat Logo" src="img/logo/Logo_Steremat_wBG1a.png">
         </a>
 
         <div class="lang">
             <?php
             if ( isset($_GET['ls']) && $_GET['ls'] == 'true' || isset($_COOKIE['ls']) && $_COOKIE['ls'] == 'true') { ?>
-                <a href="index.php?p=<?= $_GET['p']; ?>&ls=false"><div class="easy-language-button-true"></div></a>
+                <a href="index.php?p=<?= $_GET['p']; ?>&ls=false" <?php if ( isset($_GET['ls']) && $_GET['ls'] == "true" || isset($_COOKIE['ls']) && $_COOKIE['ls'] == "true" ) echo " id=\"active\""; ?> >LEICHTE SPRACHE</a>
             <?php }
             else { ?>
-                <a href="index.php?p=<?= $_GET['p']; ?>&ls=true"><div class="easy-language-button"></div></a>
+                <a href="index.php?p=<?= $_GET['p']; ?>&ls=true" <?php if ( isset($_GET['ls']) && $_GET['ls'] == "true" || isset($_COOKIE['ls']) && $_COOKIE['ls'] == "true" ) echo " id=\"active\""; ?> >LEICHTE SPRACHE</a>
             <?php } ?>
 
             <?php 
@@ -101,7 +103,7 @@ else {
                 <a href="index.php?p=<?= $_GET['p']; ?>&d=dark"><div class="design-button"></div></a>
             <?php } ?>
             
-            <a href="index.php?p=<?= $_GET['p']; ?>&l=en">DEU</a>
+            <a href="index.php?p=<?= $_GET['p']; ?>&l=en">ENG</a>
         </div>
 
         <nav id="menu">
@@ -127,10 +129,6 @@ else {
                     </ul>  
                 </li>
                 <li class="topmenu"><a href="index.php?p=partner" <?php if ($_GET['p'] == "partner") echo " id=\"active\""; ?> >Partner</a></li>
-            </ul>
-            <ul id="right">
-                <li class="topmenu"><a href="index.php?p=aktuelles" <?php if ($_GET['p'] == "aktuelles") echo " id=\"active\""; ?> >Aktuelles</a></li>
-                <li class="topmenu"><a href="index.php?p=publikationen" <?php if ($_GET['p'] == "publikationen") echo " id=\"active\""; ?> >Publikationen</a></li>
                 <li class="topmenu"><a href="index.php?p=standorte" <?php if ($_GET['p'] == "standorte") echo " id=\"active\""; ?> >Standorte</a>
                     <ul>
                         <li class="submenu"><a href="index.php?p=standorte" <?php if ($_GET['p'] == "standorte") echo " id=\"active\""; ?> >Storkower</a></li>
@@ -140,6 +138,11 @@ else {
                         <li class="submenu"><a href="index.php?p=lahnstr_70" <?php if ($_GET['p'] == "lahnstr_70") echo " id=\"active\""; ?> >Lahnstr. 70</a></li>
                     </ul>
                 </li>
+            </ul>
+            <ul id="right">
+                <li class="topmenu"><a href="feedback.php"><input type="button" value="-> FEEDBACK & Ideen <-"></a></li>
+                <li class="topmenu"><a href="index.php?p=aktuelles" <?php if ($_GET['p'] == "aktuelles") echo " id=\"active\""; ?> >Aktuelles</a></li>
+                <li class="topmenu"><a href="index.php?p=publikationen" <?php if ($_GET['p'] == "publikationen") echo " id=\"active\""; ?> >Publikationen</a></li>
             </ul>
         </nav>
     </div>

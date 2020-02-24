@@ -120,7 +120,7 @@
             <div class="header-img">
                 <img src="<?= $sel[0]['imgpath']; ?>" alt="<?= $sel[0]['imgname']; ?>" width="100%">
             </div>
-            <div id="text">
+            <!-- <div id="text"> -->
                 <?php 
                     if ( !empty($sel) ) {
                         if ( isset($_GET['ls']) && $_GET['ls'] == 'true' || isset($_COOKIE['ls']) && $_COOKIE['ls'] == 'true' ) {
@@ -140,7 +140,7 @@
                         echo "<br>Hier entstehen in Zukunft, noch mehr Inhalte für euch.";
                     }
                 ?>
-            </div>
+            <!-- </div> -->
         </div>
     </div>
 
@@ -154,17 +154,19 @@
             <span>Ja, auch diese Webseite verwendet Cookies. </span><br><br>
             <span>Allerdings sammeln wir KEINE Daten für Dritte,<br>sondern setzen jediglich Cookies für die Funktion unserer Website.</span>
             <br><br>
-            <span>Das sind folgende Cookies:
-            <br>Cookies erlauben, Sprache und Design</span>
-            <br>
+            <hr>
+            <span>Das sind folgende technische Cookies:
+            <br><br>
+            <b>Sprache und Design</b></span>
+            <hr>
             <br>
             Alles weiteren Infos zum Thema Cookies, erfahrt ihr unter:<br>
             <a href="index.php?p=datenschutz" <?php if ($_GET['p'] == "datenschutz") echo " id=\"active\""; ?> >Datenschutz</a></div>
             <br><br>
 
             Cookies erlauben?<br>
-            <a href="index.php?p=<?= $_GET['p']; ?>&c=yes">Ja</a>
-            <a href="index.php?p=<?= $_GET['p']; ?>&c=no">Nein</a>
+            <a href="index.php?p=<?= $_GET['p']; ?>&c=yes"><input type="button" value="Akzeptieren"></a>
+            <a href="index.php?p=<?= $_GET['p']; ?>&c=no"><input type="button" value="Ablehnen"></a>
         </div>
     <?php } ?>
 

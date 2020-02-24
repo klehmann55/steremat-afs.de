@@ -100,7 +100,7 @@ div#navigation-bottom {
     bottom:                 0;
     padding:                .5rem;
     width:                  100%;
-    /* position:               fixed; */
+    position:               fixed;
     /* position:               static; */
     /* position:               absolute; */
     text-align:             center;
@@ -108,7 +108,7 @@ div#navigation-bottom {
     background-color:       #353739;
     
 
-    /* box-shadow:             0px 0px 20px grey; */
+    box-shadow:             0px 0px 20px rgb(0, 0, 0);
 
     z-index:                2;
 }
@@ -178,17 +178,23 @@ div.lang {
     font-weight: bold;
 }
 div.lang a {
-    padding-left: .9rem;
+    padding-left: 2rem;
 }
 
 div.design-button {
     background-image: url(../img/logo/Design_Button_grau.png);
     background-repeat: no-repeat;
     background-size: 1.3rem;
-    height: 105%;
+    /* height: 105%;
     width: 30%;
     position: absolute;
     top: 0;
+    right: 13rem; */
+    height: 1.5rem;
+width: 1.5rem;
+position: absolute;
+top: 0;
+right: 3.3rem;
 }
 div.design-button:hover {
     background-image: url(../img/logo/Design_Button_blau.png);
@@ -198,11 +204,11 @@ div.easy-language-button {
     background-image: url(../img/logo/Alpha-Siegel_grau.png);
     background-repeat: no-repeat;
     background-size: 4rem;
-    height: 9%;
-    width: 3.5%;
+    height: 4rem;
+    width: 4rem;
     position: fixed;
     right: 6rem;
-    margin-right: 2.2rem;
+    margin-right: 2.6rem;
     top: 1rem;
     z-index: 5;
 }
@@ -214,11 +220,11 @@ div.easy-language-button-true {
     background-image: url(../img/logo/Alpha-Siegel_blau.png);
     background-repeat: no-repeat;
     background-size: 4rem;
-    height: 9%;
-    width: 3.5%;
+    height: 4rem;
+    width: 4rem;
     position: fixed;
     right: 6rem;
-    margin-right: 2.2rem;
+    margin-right: 2.6rem;
     top: 1rem;
     z-index: 5;
 }
@@ -230,7 +236,7 @@ div.easy-language-button-true {
 
 div#contentbox {
     /* top:                    10rem; */
-    /* bottom:                 10rem; */
+    /* bottom:                 2rem; */
     width:                  50%;
     min-height:                 47.8rem;
     position:               relative;
@@ -239,7 +245,7 @@ div#contentbox {
     background-color:       #414346;
     color:#cccccc;
     /* margin:                 8.85rem auto 4.5rem auto; */
-    margin:                 10rem auto 2rem auto;
+    margin:                 10rem auto 5.5rem auto;
 
     /* box-shadow:             0px 0px 20px grey; */
     border-radius:          5px;
@@ -259,7 +265,7 @@ div.header-img img {
 div.content-text {
     position:               relative;
     /* padding:                500px 5rem 1rem 5rem; */
-    padding:                2rem 2rem 1rem 2rem;
+    padding:                2rem 2.5rem 1rem 2.5rem;
     text-align:             center;
     /* width:                  100%; */
 }
