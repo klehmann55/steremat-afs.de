@@ -70,19 +70,8 @@
     // Create database connection
     $db = new Db($dbms, $host, $port, $dbname, $username, $password);
 
-    // Select DE or EN Content, if $_GET['l'] isset
-    if ( isset($_GET['ls']) && $_GET['ls'] == 'true' || isset($_COOKIE['ls']) && $_COOKIE['ls'] == 'true' ) {
-        $sel = $db->selectContentLS('"' . $_GET['p'] . '"');
-    }
-    elseif ( isset($_GET['l']) && $_GET['l'] == 'en' || isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ) {
-        $sel = $db->selectContentEN('"' . $_GET['p'] . '"');
-    }
-    elseif ( isset($_GET['l']) && $_GET['l'] == 'de' || isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'de' ) {
-        $sel = $db->selectContent('"' . $_GET['p'] . '"');
-    }
-    else {
-        $sel = $db->selectContent('"' . $_GET['p'] . '"');
-    }
+    // Include select_content.php
+    require('includes/select_content.php');
     
 ?>
 
@@ -110,7 +99,6 @@
             <link rel="stylesheet" type="text/css" href="css/styles.css">
     <?php } ?>
     
-    <script src="js/javascript.js"></script>
 </head>
 
 <body>
@@ -120,27 +108,9 @@
             <div class="header-img">
                 <img src="<?= $sel[0]['imgpath']; ?>" alt="<?= $sel[0]['imgname']; ?>" width="100%">
             </div>
-            <!-- <div id="text"> -->
-                <?php 
-                    if ( !empty($sel) ) {
-                        if ( isset($_GET['ls']) && $_GET['ls'] == 'true' || isset($_COOKIE['ls']) && $_COOKIE['ls'] == 'true' ) {
-                            echo $sel[0]['content_ls'];
-                        }                        
-                        elseif ( isset($_GET['l']) && $_GET['l'] == 'en' || isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ) {
-                            echo $sel[0]['content_en'];
-                        }
-                        elseif ( isset($_GET['l']) && $_GET['l'] == 'de' || isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'de' ) {
-                            echo $sel[0]['content'];
-                        }
-                        else {
-                            echo $sel[0]['content'];
-                        }
-                    } 
-                    else {
-                        echo "<br>Hier entstehen in Zukunft, noch mehr Inhalte für euch.";
-                    }
+                <?php
+                    require('includes/show_content.php');
                 ?>
-            <!-- </div> -->
         </div>
     </div>
 
