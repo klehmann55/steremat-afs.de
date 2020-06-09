@@ -96,7 +96,7 @@ div#navigation-bottom {
 #menu {
     font-size:              1rem;
     position:               absolute;
-    margin-left:            13%;
+    /* margin-left:            13%; */
     margin-top:             2rem;
 }
 #menu ul {
@@ -116,7 +116,7 @@ div#navigation-bottom {
     display:                none;
 }
 .topmenu a, .submenu a{
-    padding:                15px;
+    padding:                .9rem;
     color:                  #cccccc;
     text-decoration:        none;
     background-color:       #353739;
@@ -142,16 +142,6 @@ ul#right {
     right:                  10px;
     position:               fixed;
     font-weight:            bold;
-}
-
-div.lang {
-    right:                  25px;
-    position:               absolute;
-    top:                    2rem;
-    font-weight:            bold;
-}
-div.lang a {
-    padding-left:           2rem;
 }
 
 div.design-button {
@@ -227,10 +217,11 @@ div.content-text {
     padding:                2rem 2.5rem 1rem 2.5rem;
     text-align:             center;
 }
-div#text {
-    padding-left:           6rem;
-    padding-right:          6rem;
+div.content-text a:hover {
+    background-color:       #414346;
+    color:                  rgb(0, 116, 197);
 }
+
 #area1 {
     width:                  100%;
 }
@@ -250,4 +241,31 @@ div#login {
     margin:                 10rem auto;
     padding:                1rem 1rem 2rem 1rem;
     border-radius:          5px;
+}
+
+/* === MEDIA-QUERY over VIEWPORT ======================================================================= */
+
+@media screen and (max-width: 1280px) {
+    #logo {
+        position:           absolute;
+        top:                -3rem;
+    }
+    div#contentbox {
+        width:              100%;
+        margin-top:         10rem;
+        margin-bottom:      4rem;        
+    }
+    #menu {
+        position:           absolute;
+        top:                4rem;
+    }
+    div#navigation-top {
+        height:             8.99rem;
+    }
+    div.header-img {
+        width:              114.4%;
+    }
+    ul#right {
+        top: 1.5rem;
+    }
 }

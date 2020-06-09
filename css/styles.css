@@ -95,7 +95,7 @@ div#navigation-bottom {
 #menu {
     font-size:              1rem;
     position:               absolute;
-    margin-left:            13%;
+    /* margin-left:            13%; */
     margin-top:             2rem;
 }
 #menu ul {
@@ -115,7 +115,7 @@ div#navigation-bottom {
     display:                none;
 }
 .topmenu a, .submenu a{
-    padding:                15px;
+    padding:                .9rem;
     color:                  rgb(0, 0, 0);
     text-decoration:        none;
     background-color:       #ffffff;
@@ -141,16 +141,6 @@ ul#right {
     right:                  10px;
     position:               fixed;
     font-weight:            bold;
-}
-
-div.lang {
-    right:                  25px;
-    position:               absolute;
-    top:                    2rem;
-    font-weight:            bold;
-}
-div.lang a {
-    padding-left:           2rem;
 }
 
 div.design-button {
@@ -224,10 +214,11 @@ div.content-text {
     padding:                2rem 2.5rem 1rem 2.5rem;
     text-align:             center;
 }
-div#text {
-    padding-left:           6rem;
-    padding-right:          6rem;
+div.content-text a:hover {
+    background-color:       white;
+    color:                  rgb(0, 116, 197);
 }
+
 #area1 {
     width:                  100%;
 }
@@ -273,4 +264,138 @@ div#login {
     margin:                 10rem auto;
     padding:                1rem 1rem 2rem 1rem;
     border-radius:          5px;
+}
+
+/* === MEDIA-QUERY over VIEWPORT ======================================================================= */
+
+/** CSS für alle **/
+@media only screen and (max-width: 599px) {
+    #logo {
+        position:           absolute;
+        top:                -2rem;
+        width:              21rem;
+        height:             4rem;
+    }
+    div#contentbox {
+        width:              100%;
+        margin-top:         7rem;
+        margin-bottom:      6rem; 
+        min-height:         51rem;       
+    }
+    #menu {
+        position:           absolute;
+        top:                6rem;
+    }
+    div#navigation-top {
+        height:             13.55rem;
+        padding-left:       .5rem;
+    }
+    div.header-img {
+        width:              114.8%;
+    }
+    ul#right {
+        top:                .5rem;
+    }
+    .topmenu:hover ul {
+        display:            none;
+        z-index:            500;
+    }
+    .topmenu a, .submenu a {
+        padding:            .8rem;
+    }
+    div.design-button {
+        right:              3.7rem;
+    }
+    #navfooter li {
+        display:            block;
+    }
+    #navfooter a {
+        padding:            0rem;
+    }
+    div#navigation-bottom {
+
+    }
+}
+
+@media only screen and (min-width: 600px ) {
+	
+}
+
+@media only screen and (min-width: 980px ) {
+	#logo {
+        position:           absolute;
+        top:                -3rem;
+        width:              30rem;
+    }
+    div#contentbox {
+        width:              100%;
+        margin-top:         9rem;
+        margin-bottom:      4rem; 
+        min-height:         51rem;       
+    }
+    #menu {
+        position:           absolute;
+        top:                4rem;
+    }
+    div#navigation-top {
+        height:             8.99rem;
+        padding-left:       .5rem;
+    }
+    div.header-img {
+        width:              114.8%;
+    }
+    ul#right {
+        top:                1.5rem;
+    }
+}
+
+@media only screen and (min-width: 1260px ) {
+	#logo {
+        position:           absolute;
+        top:                -3rem;
+    }
+    div#contentbox {
+        width:              100%;
+        margin-top:         9rem;
+        margin-bottom:      4rem;
+        min-height:         67rem;        
+    }
+    #menu {
+        position:           absolute;
+        top:                4rem;
+    }
+    div#navigation-top {
+        height:             8.99rem;
+    }
+    div.header-img {
+        width:              114.7%;
+    }
+    ul#right {
+        top:                1.5rem;
+    }
+}
+
+/* @media screen and (maxn-width: 1024px) {
+    
+}
+
+@media screen and (max-width: 1280px) {
+    
+} */
+
+
+
+/* 
+GALAXY S9/S9+ (width: 360px)
+IPHONE 6/7/8
+
+@media screen and (max-width: 414px) {
+    .del-post {
+        position: 			absolute;
+        right: 				1rem;
+    }
+    
+    #labelremember {
+        padding-left:		30%;
+    }
 }
