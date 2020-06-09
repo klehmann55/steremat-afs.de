@@ -54,8 +54,19 @@
     // Create database connection
     $db = new Db($dbms, $host, $port, $dbname, $username, $password);
 
-    // Include select_content.php
-    require('../sql/select_content.php');
+    // Select DE or EN Content, if $_GET['l'] isset
+    if ( isset($_GET['ls']) && $_GET['ls'] == 'true' || isset($_COOKIE['ls']) && $_COOKIE['ls'] == 'true' ) {
+        $sel = $db->selectContentLS('"' . $_GET['p'] . '"');
+    }
+    elseif ( isset($_GET['l']) && $_GET['l'] == 'en' || isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ) {
+        $sel = $db->selectContentEN('"' . $_GET['p'] . '"');
+    }    
+    elseif ( isset($_GET['l']) && $_GET['l'] == 'de' || isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'de' ) {
+        $sel = $db->selectContent('"' . $_GET['p'] . '"');
+    }    
+    else {
+        $sel = $db->selectContent('"' . $_GET['p'] . '"');
+    }
 ?>
 
 <!DOCTYPE html>
@@ -81,24 +92,36 @@
             <link rel="stylesheet" type="text/css" href="../css/styles.css">
     <?php } ?>
 
-    <!-- <script type="text/javascript" src="../nicEdit/nicEdit.js"></script> -->
-    <script type="text/javascript" src="../ckeditorfull/ckeditor.js"></script>
+    <script src="../js/javascript.js"></script>
 
+    <script type="text/javascript" src="../nicEdit/nicEdit.js"></script>
+    <!-- <script src="//cdn.ckeditor.com/4.13.1/full-all/ckeditor.js"></script> -->
+    <!-- <script src="https://cdn.ckeditor.com/ckeditor5/16.0.0/classic/ckeditor.js"></script> -->
+    <!-- <script src="https://cdn.ckeditor.com/ckeditor5/16.0.0/inline/ckeditor.js"></script> -->
     <script type="text/javascript">
 	    // bkLib.onDomLoaded(function() {  
         //     new nicEditor({fullPanel : true, iconsPath : '../nicEdit/nicEditorIcons.gif', maxWidth : 500}).panelInstance('area1').oninput;
         // });
 
-        // document.addEventListener("DOMContentLoaded", bkLib1);
-        document.addEventListener("DOMContentLoaded", bkLib2);
+        document.addEventListener("DOMContentLoaded", bkLib1);
+        // document.addEventListener("DOMContentLoaded", bkLib2);
 
-        // function bkLib1() {
-        //    var areaone = document.getElementById('area1');
-        //    areaone.oninput = new nicEditor({fullPanel : true, iconsPath : '../nicEdit/nicEditorIcons.gif'}).panelInstance('area1');
-        // }
+        function bkLib1() {
+           var areaone = document.getElementById('area1');
+           areaone.oninput = new nicEditor({fullPanel : true, iconsPath : '../nicEdit/nicEditorIcons.gif'}).panelInstance('area1');
+        }
 
         function bkLib2() {
             CKEDITOR.replace( 'area1' );
+        //     // ClassicEditor
+        //     // InlineEditor
+        //                         .create( document.querySelector( '#area1' ) )
+        //                         .then( editor => {
+        //                                 console.log( editor );
+        //                         } )
+        //                         .catch( error => {
+        //                                 console.error( error );
+        //                         } );
         }
     </script>
 						
@@ -125,7 +148,23 @@
                 
                 <textarea id="area1" name="area1">                
                     <?php
-                        require('../sql/show_content.php');
+                    if ( !empty($sel) ) {
+                        if ( isset($_GET['ls']) && $_GET['ls'] == 'true' || isset($_COOKIE['ls']) && $_COOKIE['ls'] == 'true' ) {
+                            echo $sel[0]['content_ls'];
+                        }                        
+                        elseif ( isset($_GET['l']) && $_GET['l'] == 'en' || isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ) {
+                            echo $sel[0]['content_en'];
+                        }
+                        elseif ( isset($_GET['l']) && $_GET['l'] == 'de' || isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'de' ) {
+                            echo $sel[0]['content'];
+                        }
+                        else {
+                            echo $sel[0]['content'];
+                        }
+                    }
+                    else {
+                        echo "<br>Noch leer, bitte Inhalt einfügen.";
+                    }
                     ?>           
                 </textarea>
                 

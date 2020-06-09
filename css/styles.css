@@ -5,7 +5,6 @@
     white
     lightgrey               rgb(190,190,190)
     blue                    rgb(100, 100, 250)
-    steremat blau           rgb(0, 116, 197)
 */
 
 /* REGULAR ........................................................................ */
@@ -19,7 +18,16 @@ body {
     font-size: 			    16px;
     font-family: 		    'Arial', sans-serif;
     width:                  100%;
-    background-color:       rgb(0, 116, 197);
+    /* background-color:       rgb(190,190,190); */
+    /* background-color:       rgb(27, 95, 255); */
+    /* background-image: linear-gradient(to top, rgb(100, 100, 250) 0%, black 50%); */
+    /* background-image: linear-gradient(to top, black 0%, rgb(100, 100, 250) 50%); */
+    background-image: linear-gradient(to top, rgb(100, 100, 250) 40%, white 100%);
+    /* background-image: linear-gradient(to top, white 0%, rgb(100, 100, 250) 70%); */
+    /* background-image:       url("../img/pixabay/tv-tower.jpg"); */
+    /* background-image:       url("../img/pixabay/brandenburg-gate.jpg"); */
+    /* background-image:       url("../img/pixabay/berlin.jpg"); */
+    /* background-image:       url("../img/pixabay/brandenburg-gate1.jpg"); */
     background-repeat:      no-repeat;
     background-attachment:  fixed;
     background-size:        cover;
@@ -29,47 +37,44 @@ a {
     text-decoration:        none;
 }
 a:hover {
-    color:                  white;
-    background-color:       rgb(0, 116, 197);
+    color:                  rgb(100, 100, 250);
 }
 a:active {
-    color:                  white;
-    background-color:       rgb(0, 116, 197);
+    color:                  rgb(100, 100, 250);
 }
 a:target {
-    color:                  white;
-    background-color:       rgb(0, 116, 197);
+    color:                  rgb(100, 100, 250);
 }
 #active {
-    color:                  white;
-    background-color:       rgb(0, 116, 197);
+    color:                  rgb(100, 100, 250);
 }
 
 h2, h3 {
     text-align:             center;
-    color:                  rgb(0, 116, 197);
+    color:                  rgb(100, 100, 250);
 }
 
 
 /* NAVIGATION ...................................................................... */
 
 #logo {
-    width:                  31rem;
-    margin-top:             -2.5rem;
-    margin-right:           .5rem;
-    height:                 5.5rem;
+    width:                  20rem;
 }
 
+/* #navtop li {
+    padding:                1rem;
+    display:                inline;
+    background-color:       white;
+
+} */
 #navfooter li {
+    padding:                1rem;
     display:                inline;
     background-color:       white;
 }
-#navfooter a {
-    padding:                1.6rem;
-}
 div#navigation-top {
     top:                    0;
-    padding:                1rem .5rem 5rem 1rem;
+    padding:                1rem .5rem 3.5rem 1rem;
     width:                  100%;
     position:               fixed;
     background-color:       white; 
@@ -84,6 +89,8 @@ div#navigation-bottom {
     padding:                .5rem;
     width:                  100%;
     position:               fixed;
+    /* position:               static; */
+    /* position:               absolute; */
     text-align:             center;
     background-color:       white;
 
@@ -93,97 +100,115 @@ div#navigation-bottom {
 }
 
 #menu {
-    font-size:              1rem;
-    position:               absolute;
-    /* margin-left:            13%; */
-    margin-top:             2rem;
+    font-size:1rem;
+    position:absolute;
+    margin-left: -10px;
 }
 #menu ul {
-    list-style-type:        none;
-    list-style-image:       none;
-    margin:                 0;
-    padding-left:           0rem;
+    list-style-type:none;
+    list-style-image:none;
+    margin:0;
+    padding-left:0rem;
 }
 #menu li.topmenu {
-    float:                  left;
+    float:left;
 }
 .topmenu a {
-    float:                  left;
-    text-align:             center;
+    float:left;
+    /* width:120px; */
+    text-align:center;
 }
 .topmenu ul{
-    display:                none;
+    display:none;
 }
 .topmenu a, .submenu a{
-    padding:                .9rem;
-    color:                  rgb(0, 0, 0);
-    text-decoration:        none;
-    background-color:       #ffffff;
-    margin:                 0;
+    padding:15px;
+    color:rgb(0, 0, 0);
+    /* font-weight:bold; */
+    text-decoration:none;
+    background-color:#ffffff;
+    margin:0;
 }
 .submenu a{
-    font-size:              10px;
-    width:                  100%;
-    position:               relative;
-    clear:                  both; /* special IE6 */
-    text-align:             left;
+    font-size:10px;
+    width:100%;
+    position:relative;
+    clear:both; /* special IE6 */
+    text-align: left;
 }
 #menu a:hover, .topmenu.on a {
-    color:                  white;
-    background-color:       rgb(0, 116, 197);
+    color:rgb(100, 100, 250);
+    background-color:rgb(255, 255, 255) !important;
 }
 .topmenu:hover ul {
-    display:                block;
-    z-index:                500;
+    display:block;
+    z-index:500;
 }
 ul#right {
     padding:                0;
+    /* right:                  -87rem; */
     right:                  10px;
     position:               fixed;
-    font-weight:            bold;
+    /* width:                  520px; */
+    /* float:                  right; */
+}
+
+div.lang {
+    right: 25px;
+    position: absolute;
+    top: 2rem;
+    font-weight: bold;
+}
+div.lang a {
+    padding-left: 2rem;
 }
 
 div.design-button {
-    background-image:       url(../img/logo/Design_Button.png);
-    background-repeat:      no-repeat;
-    background-size:        1.3rem;
-    height:                 1.5rem;
-    width:                  1.5rem;
-    position:               absolute;
-    top:                    .9rem;
-    right:                  4.1rem;
+    background-image: url(../img/logo/Design_Button.png);
+    background-repeat: no-repeat;
+    background-size: 1.3rem;
+    /* height: 105%;
+    width: 30%;
+    position: absolute;
+    top: 0;
+    right: 13rem; */
+    height: 1.5rem;
+width: 1.5rem;
+position: absolute;
+top: 0;
+right: 3.3rem;
 }
 div.design-button:hover {
-    background-image:       url(../img/logo/Design_Button_blau.png);
+    background-image: url(../img/logo/Design_Button_blau.png);
 }
 
 div.easy-language-button {
-    background-image:       url(../img/logo/Alpha-Siegel_schwarz.png);
-    background-repeat:      no-repeat;
-    background-size:        4rem;
-    height:                 4rem;
-    width:                  4rem;
-    position:               fixed;
-    right:                  6rem;
-    margin-right:           2.6rem;
-    top:                    1rem;
-    z-index:                5;
+    background-image: url(../img/logo/Alpha-Siegel_schwarz.png);
+    background-repeat: no-repeat;
+    background-size: 4rem;
+    height: 4rem;
+    width: 4rem;
+    position: fixed;
+    right: 6rem;
+    margin-right: 2.6rem;
+    top: 1rem;
+    z-index: 5;
 }
 div.easy-language-button:hover {
-    background-image:       url(../img/logo/Alpha-Siegel_blau.png);
+    background-image: url(../img/logo/Alpha-Siegel_blau.png);
 }
 
 div.easy-language-button-true {
-    background-image:       url(../img/logo/Alpha-Siegel_blau.png);
-    background-repeat:      no-repeat;
-    background-size:        4rem;
-    height:                 4rem;
-    width:                  4rem;
-    position:               fixed;
-    right:                  6rem;
-    margin-right:           2.6rem;
-    top:                    1rem;
-    z-index:                5;
+    background-image: url(../img/logo/Alpha-Siegel_blau.png);
+    background-repeat: no-repeat;
+    background-size: 4rem;
+    height: 4rem;
+    width: 4rem;
+    position: fixed;
+    right: 6rem;
+    margin-right: 2.6rem;
+    top: 1rem;
+    z-index: 5;
 }
 /* div.easy-language-button-true:hover {
     background-image: url(../img/logo/Alpha-Siegel_schwarz.png);
@@ -192,66 +217,80 @@ div.easy-language-button-true {
 /* CONTENT ........................................................................ */
 
 div#contentbox {
-    width:                  66%;
-    min-height:             47.8rem;
+    /* top:                    10rem; */
+    /* bottom:                 2rem; */
+    width:                  50%;
+    min-height:                 47.8rem;
     position:               relative;
     background-color:       white;
-    margin:                 9rem auto 5.5rem auto;
+    /* margin:                 8.85rem auto 4.5rem auto; */
+    margin:                 10rem auto 5.5rem auto;
+
+    /* box-shadow:             0px 0px 20px grey; */
     border-radius:          5px;
 
     z-index:                1;
 }
 div.header-img {
-    width:                  118%;
-    margin-left:            -9%;
-    margin-top:             -5%;
+    /* position:               absolute; */
+    /* clip:                   rect(0px,1500px,490px,0px); */
+    width: 118%;
+    margin-left: -9%;
+    margin-top: -5%;
 }
 div.header-img img {
     border-radius:          5px;
 }
 div.content-text {
     position:               relative;
+    /* padding:                500px 5rem 1rem 5rem; */
     padding:                2rem 2.5rem 1rem 2.5rem;
     text-align:             center;
+    /* width:                  100%; */
 }
-div.content-text a:hover {
-    background-color:       white;
-    color:                  rgb(0, 116, 197);
+div#text {
+    padding-left:           6rem;
+    padding-right:          6rem;
 }
-
 #area1 {
+
     width:                  100%;
+    /* display:                block; */
 }
 .nicEdit-main {
     overflow:               scroll !important;
     height:                 30rem;
+    /* margin-left:            10%;
+    margin-right:           10%; */
 }
 
 /* COOKIE Statement ............................................................... */
 
 div#cookie-statement {
-    position:               fixed;
-    text-align:             center;
-    background-color:       darkblue;
-    color:                  white;
-    padding:                2rem;
-    bottom:                 40%;
-    z-index:                2;
-    width:                  100%;
+    position: fixed;
+    text-align: center;
+    background-color: darkblue;
+    color: white;
+    /* margin: 20rem 40% 20rem auto; */
+    /* margin-left: 35%; */
+    padding: 2rem;
+    bottom: 40%;
+    z-index: 2;
+    width: 100%;
     box-shadow:             0px 0px 100px rgb(0, 0, 0);
 }
 div#cookie-statement a {
-    color:                  white;
-    text-decoration:        underline;
+    color: white;
+    text-decoration: underline;
 }
 div#cookie-statement a:hover {
-    color:                  rgb(0, 116, 197);
+    color:                  rgb(100, 100, 250);
 }
 div#cookie-statement a:active {
-    color:                  rgb(0, 116, 197);
+    color:                  rgb(100, 100, 250);
 }
 div#cookie-statement a:target {
-    color:                  rgb(0, 116, 197);
+    color:                  rgb(100, 100, 250);
 }
 
 /* CMS - Login .................................................................... */
@@ -259,143 +298,14 @@ div#cookie-statement a:target {
 div#login {
     width:                  30%;
     min-width:              15rem;
+    /* min-height:             15rem; */
     background-color:       white;
     text-align:             center;
+
     margin:                 10rem auto;
     padding:                1rem 1rem 2rem 1rem;
+
+    /* box-shadow:             0 0 20px grey; */
+
     border-radius:          5px;
-}
-
-/* === MEDIA-QUERY over VIEWPORT ======================================================================= */
-
-/** CSS für alle **/
-@media only screen and (max-width: 599px) {
-    #logo {
-        position:           absolute;
-        top:                -2rem;
-        width:              21rem;
-        height:             4rem;
-    }
-    div#contentbox {
-        width:              100%;
-        margin-top:         7rem;
-        margin-bottom:      6rem; 
-        min-height:         51rem;       
-    }
-    #menu {
-        position:           absolute;
-        top:                6rem;
-    }
-    div#navigation-top {
-        height:             13.55rem;
-        padding-left:       .5rem;
-    }
-    div.header-img {
-        width:              114.8%;
-    }
-    ul#right {
-        top:                .5rem;
-    }
-    .topmenu:hover ul {
-        display:            none;
-        z-index:            500;
-    }
-    .topmenu a, .submenu a {
-        padding:            .8rem;
-    }
-    div.design-button {
-        right:              3.7rem;
-    }
-    #navfooter li {
-        display:            block;
-    }
-    #navfooter a {
-        padding:            0rem;
-    }
-    div#navigation-bottom {
-
-    }
-}
-
-@media only screen and (min-width: 600px ) {
-	
-}
-
-@media only screen and (min-width: 980px ) {
-	#logo {
-        position:           absolute;
-        top:                -3rem;
-        width:              30rem;
-    }
-    div#contentbox {
-        width:              100%;
-        margin-top:         9rem;
-        margin-bottom:      4rem; 
-        min-height:         51rem;       
-    }
-    #menu {
-        position:           absolute;
-        top:                4rem;
-    }
-    div#navigation-top {
-        height:             8.99rem;
-        padding-left:       .5rem;
-    }
-    div.header-img {
-        width:              114.8%;
-    }
-    ul#right {
-        top:                1.5rem;
-    }
-}
-
-@media only screen and (min-width: 1260px ) {
-	#logo {
-        position:           absolute;
-        top:                -3rem;
-    }
-    div#contentbox {
-        width:              100%;
-        margin-top:         9rem;
-        margin-bottom:      4rem;
-        min-height:         67rem;        
-    }
-    #menu {
-        position:           absolute;
-        top:                4rem;
-    }
-    div#navigation-top {
-        height:             8.99rem;
-    }
-    div.header-img {
-        width:              114.7%;
-    }
-    ul#right {
-        top:                1.5rem;
-    }
-}
-
-/* @media screen and (maxn-width: 1024px) {
-    
-}
-
-@media screen and (max-width: 1280px) {
-    
-} */
-
-
-
-/* 
-GALAXY S9/S9+ (width: 360px)
-IPHONE 6/7/8
-
-@media screen and (max-width: 414px) {
-    .del-post {
-        position: 			absolute;
-        right: 				1rem;
-    }
-    
-    #labelremember {
-        padding-left:		30%;
-    }
 }
