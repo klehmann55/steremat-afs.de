@@ -71,7 +71,7 @@
     $db = new Db($dbms, $host, $port, $dbname, $username, $password);
 
     // Include select_content.php
-    require('sql/select_content.php');
+    require('includes/select_content.php');
     
 ?>
 
@@ -109,7 +109,7 @@
                 <img src="<?= $sel[0]['imgpath']; ?>" alt="<?= $sel[0]['imgname']; ?>" width="100%">
             </div>
                 <?php
-                    require('sql/show_content.php');
+                    require('includes/show_content.php');
                 ?>
         </div>
     </div>

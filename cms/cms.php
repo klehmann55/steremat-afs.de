@@ -55,7 +55,18 @@
     $db = new Db($dbms, $host, $port, $dbname, $username, $password);
 
     // Include select_content.php
-    require('../sql/select_content.php');
+    if ( isset($_GET['ls']) && $_GET['ls'] == 'true' || isset($_COOKIE['ls']) && $_COOKIE['ls'] == 'true' ) {
+        $sel = $db->selectContentLS('"' . $_GET['p'] . '"');
+    }
+    elseif ( isset($_GET['l']) && $_GET['l'] == 'en' || isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ) {
+        $sel = $db->selectContentEN('"' . $_GET['p'] . '"');
+    }    
+    elseif ( isset($_GET['l']) && $_GET['l'] == 'de' || isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'de' ) {
+        $sel = $db->selectContent('"' . $_GET['p'] . '"');
+    }    
+    else {
+        $sel = $db->selectContent('"' . $_GET['p'] . '"');
+    }
 ?>
 
 <!DOCTYPE html>
@@ -125,7 +136,7 @@
                 
                 <textarea id="area1" name="area1">                
                     <?php
-                        require('../sql/show_content.php');
+                        require('../includes/show_content.php');
                     ?>           
                 </textarea>
                 
