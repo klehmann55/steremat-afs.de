@@ -47,6 +47,22 @@ class Db{
 		$this -> data = $this -> statement -> fetchAll();
 		return $this -> data;
 	}
+	// Select Newsfeed ............................................................................
+	function selectNewsfeed() {
+		$this -> sql = 'SELECT n.id, c.category_de, n.headline, n.text FROM newsfeed AS n JOIN category AS c ON n.category = c.id ORDER BY n.id DESC';
+		$this -> statement = $this -> db -> prepare($this -> sql);
+		$this -> statement -> execute();
+		$this -> data = $this -> statement -> fetchAll();
+		return $this -> data;
+	}
+	// Select Post ............................................................................
+	function selectPost($id) {
+		$this -> sql = 'SELECT c.category_de, n.headline, n.text FROM newsfeed AS n JOIN category AS c ON n.category = c.id WHERE n.id = ' . $id;
+		$this -> statement = $this -> db -> prepare($this -> sql);
+		$this -> statement -> execute();
+		$this -> data = $this -> statement -> fetchAll();
+		return $this -> data;
+	}
 
 
 
@@ -65,6 +81,12 @@ class Db{
 	// Insert Content LS
 	function insertContentLS($insert, $static) {
 		$this -> sql = 'INSERT INTO content (content_ls, static) VALUES ('.$insert.', '.$static.')';
+		$this -> statement = $this -> db -> prepare($this -> sql);
+		$this -> statement -> execute();
+	}
+	// Insert Post
+	function insertPost($category, $headline, $text) {
+		$this -> sql = 'INSERT INTO newsfeed (category, headline, text) VALUES ('.$category.', '.$headline.', '.$text.')';
 		$this -> statement = $this -> db -> prepare($this -> sql);
 		$this -> statement -> execute();
 	}
@@ -96,6 +118,17 @@ class Db{
 		$this -> sql = 'UPDATE content SET content_ls= :update WHERE static=' . $static;
 		$this -> statement = $this -> db -> prepare($this -> sql);
 		$this-> statement -> bindValue(':update', $update); 
+		$this -> statement -> execute();
+	}
+	// Update Post
+	function updatePost($category, $headline, $msg, $id) {
+		// $this -> sql = 'UPDATE content SET content="' . $update . '" WHERE static=' . $static;
+		// $this -> sql = 'UPDATE content SET content=' . $update . ' WHERE static=' . $static;
+		$this -> sql = 'UPDATE newsfeed SET category=' . $category . ', headline=' . $headline . ', text=' . $msg . ' WHERE id=' . $id;
+		$this -> statement = $this -> db -> prepare($this -> sql);
+		// $this-> statement -> bindValue(':category', $category);
+		// $this-> statement -> bindValue(':headline', $headline); 
+		// $this-> statement -> bindValue(':text', $msg); 
 		$this -> statement -> execute();
 	}
 
@@ -132,6 +165,14 @@ class Db{
 	// Insert Feedback
 	function insertFeedback($name, $feedback) {
 		$this -> sql = 'INSERT INTO feedback (name, feedback) VALUES ('.$name.', '.$feedback.')';
+		$this -> statement = $this -> db -> prepare($this -> sql);
+		$this -> statement -> execute();
+	}
+
+
+	// Delete Post
+	function deletePost($id){
+		$this -> sql = 'DELETE FROM newsfeed WHERE id=' . $id;
 		$this -> statement = $this -> db -> prepare($this -> sql);
 		$this -> statement -> execute();
 	}

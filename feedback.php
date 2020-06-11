@@ -62,7 +62,7 @@ if ( isset($_POST['submit']) ) {
             <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post">
                 <label for="feedname"><b>Name:</b></label><br>
                 <input type="text" id="feedname" name="feedname"><br><br>
-                <textarea id="feedback" name="feedback" cols="100" rows="30" placeholder="Konstruktive Kritik, Vorschläge, Ideen und Wünsche.."><br><b>Konstruktive Kritik, Vorschläge, Ideen und Wünsche..</b></textarea><br><br>
+                <textarea id="feedback" name="feedback" cols="" rows="30" style="width:100%;" placeholder="Konstruktive Kritik, Vorschläge, Ideen und Wünsche.."><br><b>Konstruktive Kritik, Vorschläge, Ideen und Wünsche..</b></textarea><br><br>
                 <input type="submit" id="submit" name="submit">
             </form>
 
